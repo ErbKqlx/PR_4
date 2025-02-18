@@ -29,65 +29,70 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            button1 = new Button();
-            button3 = new Button();
-            button2 = new Button();
-            dataGridView1 = new DataGridView();
+            buttonUpdate = new Button();
+            buttonDelete = new Button();
+            buttonAdd = new Button();
+            dataGridViewTypesOfPartners = new DataGridView();
             panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfPartners).BeginInit();
             SuspendLayout();
             // 
             // panel1
             // 
-            panel1.Controls.Add(button2);
-            panel1.Controls.Add(button3);
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(buttonUpdate);
+            panel1.Controls.Add(buttonDelete);
+            panel1.Controls.Add(buttonAdd);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(10, 10);
-            panel1.Margin = new Padding(5, 5, 5, 5);
+            panel1.Margin = new Padding(5);
             panel1.Name = "panel1";
             panel1.Size = new Size(1147, 97);
             panel1.TabIndex = 0;
             // 
-            // button1
+            // buttonUpdate
             // 
-            button1.Location = new Point(19, 23);
-            button1.Margin = new Padding(5, 5, 5, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(164, 52);
-            button1.TabIndex = 0;
-            button1.Text = "Добавить";
-            button1.UseVisualStyleBackColor = true;
+            buttonUpdate.Location = new Point(200, 25);
+            buttonUpdate.Margin = new Padding(5);
+            buttonUpdate.Name = "buttonUpdate";
+            buttonUpdate.Size = new Size(164, 52);
+            buttonUpdate.TabIndex = 3;
+            buttonUpdate.Text = "Редактировать";
+            buttonUpdate.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // buttonDelete
             // 
-            button3.Location = new Point(382, 25);
-            button3.Margin = new Padding(5, 5, 5, 5);
-            button3.Name = "button3";
-            button3.Size = new Size(164, 52);
-            button3.TabIndex = 2;
-            button3.Text = "Удалить";
-            button3.UseVisualStyleBackColor = true;
+            buttonDelete.Location = new Point(382, 25);
+            buttonDelete.Margin = new Padding(5);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(164, 52);
+            buttonDelete.TabIndex = 2;
+            buttonDelete.Text = "Удалить";
+            buttonDelete.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // buttonAdd
             // 
-            button2.Location = new Point(200, 25);
-            button2.Margin = new Padding(5, 5, 5, 5);
-            button2.Name = "button2";
-            button2.Size = new Size(164, 52);
-            button2.TabIndex = 3;
-            button2.Text = "Редактировать";
-            button2.UseVisualStyleBackColor = true;
+            buttonAdd.Location = new Point(19, 23);
+            buttonAdd.Margin = new Padding(5);
+            buttonAdd.Name = "buttonAdd";
+            buttonAdd.Size = new Size(164, 52);
+            buttonAdd.TabIndex = 0;
+            buttonAdd.Text = "Добавить";
+            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.Click += ButtonAdd_Click;
             // 
-            // dataGridView1
+            // dataGridViewTypesOfPartners
             // 
-            dataGridView1.BackgroundColor = Color.White;
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(10, 107);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(1147, 496);
-            dataGridView1.TabIndex = 1;
+            dataGridViewTypesOfPartners.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewTypesOfPartners.BackgroundColor = Color.White;
+            dataGridViewTypesOfPartners.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTypesOfPartners.Dock = DockStyle.Fill;
+            dataGridViewTypesOfPartners.Location = new Point(10, 107);
+            dataGridViewTypesOfPartners.MultiSelect = false;
+            dataGridViewTypesOfPartners.Name = "dataGridViewTypesOfPartners";
+            dataGridViewTypesOfPartners.ReadOnly = true;
+            dataGridViewTypesOfPartners.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTypesOfPartners.Size = new Size(1147, 496);
+            dataGridViewTypesOfPartners.TabIndex = 1;
             // 
             // Form1
             // 
@@ -95,24 +100,24 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1167, 613);
-            Controls.Add(dataGridView1);
+            Controls.Add(dataGridViewTypesOfPartners);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "Form1";
             Padding = new Padding(10);
             Text = "Form1";
             panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfPartners).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel panel1;
-        private Button button2;
-        private Button button3;
-        private Button button1;
-        private DataGridView dataGridView1;
+        private Button buttonUpdate;
+        private Button buttonDelete;
+        private Button buttonAdd;
+        private DataGridView dataGridViewTypesOfPartners;
     }
 }
