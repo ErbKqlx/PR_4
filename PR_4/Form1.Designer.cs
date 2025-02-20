@@ -33,8 +33,10 @@
             buttonDelete = new Button();
             buttonAdd = new Button();
             dataGridViewTypesOfPartners = new DataGridView();
+            dataGridViewTypesOfProducts = new DataGridView();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfPartners).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfProducts).BeginInit();
             SuspendLayout();
             // 
             // panel1
@@ -90,14 +92,29 @@
             dataGridViewTypesOfPartners.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGridViewTypesOfPartners.BackgroundColor = Color.White;
             dataGridViewTypesOfPartners.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewTypesOfPartners.Dock = DockStyle.Fill;
+            dataGridViewTypesOfPartners.Dock = DockStyle.Left;
             dataGridViewTypesOfPartners.Location = new Point(10, 107);
             dataGridViewTypesOfPartners.MultiSelect = false;
             dataGridViewTypesOfPartners.Name = "dataGridViewTypesOfPartners";
             dataGridViewTypesOfPartners.ReadOnly = true;
             dataGridViewTypesOfPartners.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridViewTypesOfPartners.Size = new Size(1147, 496);
+            dataGridViewTypesOfPartners.Size = new Size(560, 496);
             dataGridViewTypesOfPartners.TabIndex = 1;
+            dataGridViewTypesOfPartners.MouseDown += SelectDataGridView;
+            // 
+            // dataGridViewTypesOfProducts
+            // 
+            dataGridViewTypesOfProducts.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
+            dataGridViewTypesOfProducts.BackgroundColor = Color.White;
+            dataGridViewTypesOfProducts.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewTypesOfProducts.Dock = DockStyle.Right;
+            dataGridViewTypesOfProducts.Location = new Point(576, 107);
+            dataGridViewTypesOfProducts.MultiSelect = false;
+            dataGridViewTypesOfProducts.Name = "dataGridViewTypesOfProducts";
+            dataGridViewTypesOfProducts.ReadOnly = true;
+            dataGridViewTypesOfProducts.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridViewTypesOfProducts.Size = new Size(581, 496);
+            dataGridViewTypesOfProducts.TabIndex = 2;
             // 
             // Form1
             // 
@@ -105,6 +122,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
             ClientSize = new Size(1167, 613);
+            Controls.Add(dataGridViewTypesOfProducts);
             Controls.Add(dataGridViewTypesOfPartners);
             Controls.Add(panel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
@@ -114,6 +132,7 @@
             Text = "Form1";
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfPartners).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewTypesOfProducts).EndInit();
             ResumeLayout(false);
         }
 
@@ -124,5 +143,6 @@
         private Button buttonDelete;
         private Button buttonAdd;
         private DataGridView dataGridViewTypesOfPartners;
+        private DataGridView dataGridViewTypesOfProducts;
     }
 }

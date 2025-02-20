@@ -1,12 +1,14 @@
 using Microsoft.EntityFrameworkCore;
 using PR_4.Models;
 using System.ComponentModel;
+using System.Runtime.InteropServices;
 
 namespace PR_4
 {
     public partial class Form1 : Form
     {
         private PartnersContext db;
+        private DataGridView dataGridView;
 
         public Form1()
         {
@@ -17,12 +19,19 @@ namespace PR_4
         {
             base.OnLoad(e);
             db = new PartnersContext();
+
             db.TypesOfPartners.Load();
-            dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
-                .OrderBy(t => t.TypeOfPartner).ToList();
+            db.TypesOfProducts.Load();
+
+            SetSortedData();
 
             dataGridViewTypesOfPartners.Columns["Id"].Visible = false;
             dataGridViewTypesOfPartners.Columns["Partners"].Visible = false;
+
+            dataGridViewTypesOfProducts.Columns["Id"].Visible = false;
+            dataGridViewTypesOfProducts.Columns["Products"].Visible = false;
+
+
         }
 
         protected override void OnClosing(CancelEventArgs e)
@@ -41,6 +50,8 @@ namespace PR_4
             if (result == DialogResult.Cancel)
                 return;
 
+
+
             TypesOfPartner typesOfPartner = new();
             typesOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
 
@@ -49,22 +60,23 @@ namespace PR_4
 
             MessageBox.Show("Новый объект добавлен");
 
-            dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
-                .OrderBy(t => t.TypeOfPartner).ToList();
+            SetSortedData();
         }
 
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
+            if (dataGridView.SelectedRows.Count == 0)
                 return;
 
-            int index = dataGridViewTypesOfPartners.SelectedRows[0].Index;
+            int index = dataGridView.SelectedRows[0].Index;
             short id = 0;
-            bool converted = Int16.TryParse(dataGridViewTypesOfPartners[0, index].Value.ToString(), out id);
+            bool converted = Int16.TryParse(dataGridView[0, index].Value.ToString(), out id);
             if (!converted)
                 return;
 
+
             TypesOfPartner typesOfPartner = db.TypesOfPartners.Find(id);
+
 
             FormTypeAdd formTypeAdd = new();
             formTypeAdd.textBoxTypeName.Text = typesOfPartner.TypeOfPartner;
@@ -78,13 +90,13 @@ namespace PR_4
 
             db.SaveChanges();
             MessageBox.Show("Редактирование объекта завершено");
-            dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
-                .OrderBy(t => t.TypeOfPartner).ToList();
+
+            SetSortedData();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
+            if (dataGridView.SelectedRows.Count == 0)
                 return;
 
             DialogResult result = MessageBox.Show(
@@ -96,9 +108,9 @@ namespace PR_4
             if (result == DialogResult.No)
                 return;
 
-            int index = dataGridViewTypesOfPartners.SelectedRows[0].Index;
+            int index = dataGridView.SelectedRows[0].Index;
             short id = 0;
-            bool converted = Int16.TryParse(dataGridViewTypesOfPartners[0, index].Value.ToString(), out id);
+            bool converted = Int16.TryParse(dataGridView[0, index].Value.ToString(), out id);
             if (!converted)
                 return;
 
@@ -107,8 +119,32 @@ namespace PR_4
 
             db.SaveChanges();
             MessageBox.Show("Объект удален");
+
+            SetSortedData();
+        }
+
+        private void SetSortedData()
+        {
             dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
                 .OrderBy(t => t.TypeOfPartner).ToList();
+
+            dataGridViewTypesOfProducts.DataSource = db.TypesOfProducts.Local
+                .OrderBy(t => t.TypeOfProduct).ToList();
         }
+
+        private void SelectDataGridView(object sender, MouseEventArgs e)
+        {
+            dataGridView = sender as DataGridView;
+        }
+
+
+
+        //private Object CreateObject(Object obj)
+        //{
+        //    if (obj == db.TypesOfPartners)
+        //    {
+
+        //    }
+        //}
     }
 }
