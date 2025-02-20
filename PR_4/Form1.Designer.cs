@@ -58,6 +58,7 @@
             buttonUpdate.TabIndex = 3;
             buttonUpdate.Text = "Редактировать";
             buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.Click += ButtonUpdate_Click;
             // 
             // buttonDelete
             // 
@@ -68,6 +69,7 @@
             buttonDelete.TabIndex = 2;
             buttonDelete.Text = "Удалить";
             buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.Click += ButtonDelete_Click;
             // 
             // buttonAdd
             // 
