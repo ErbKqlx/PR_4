@@ -1,4 +1,3 @@
-
 using Microsoft.EntityFrameworkCore;
 using PR_4.Models;
 using System.ComponentModel;
@@ -48,7 +47,7 @@ namespace PR_4
             db.TypesOfPartners.Add(typesOfPartner);
             db.SaveChanges();
 
-            MessageBox.Show("А");
+            MessageBox.Show("Новый объект добавлен");
 
             dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
                 .OrderBy(t => t.TypeOfPartner).ToList();

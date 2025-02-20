@@ -54,6 +54,7 @@
             // 
             // buttonSave
             // 
+            buttonSave.DialogResult = DialogResult.OK;
             buttonSave.Location = new Point(210, 3);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(127, 33);
@@ -63,6 +64,7 @@
             // 
             // buttonCancel
             // 
+            buttonCancel.DialogResult = DialogResult.Cancel;
             buttonCancel.Location = new Point(77, 3);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(127, 33);
