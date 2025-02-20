@@ -54,23 +54,25 @@
             // 
             // buttonSave
             // 
+            buttonSave.BackColor = Color.White;
             buttonSave.DialogResult = DialogResult.OK;
             buttonSave.Location = new Point(210, 3);
             buttonSave.Name = "buttonSave";
             buttonSave.Size = new Size(127, 33);
             buttonSave.TabIndex = 0;
             buttonSave.Text = "Сохранить";
-            buttonSave.UseVisualStyleBackColor = true;
+            buttonSave.UseVisualStyleBackColor = false;
             // 
             // buttonCancel
             // 
+            buttonCancel.BackColor = Color.White;
             buttonCancel.DialogResult = DialogResult.Cancel;
             buttonCancel.Location = new Point(77, 3);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(127, 33);
             buttonCancel.TabIndex = 1;
             buttonCancel.Text = "Отмена";
-            buttonCancel.UseVisualStyleBackColor = true;
+            buttonCancel.UseVisualStyleBackColor = false;
             // 
             // panel1
             // 

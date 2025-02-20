@@ -51,35 +51,38 @@
             // 
             // buttonUpdate
             // 
+            buttonUpdate.BackColor = Color.White;
             buttonUpdate.Location = new Point(200, 25);
             buttonUpdate.Margin = new Padding(5);
             buttonUpdate.Name = "buttonUpdate";
             buttonUpdate.Size = new Size(164, 52);
             buttonUpdate.TabIndex = 3;
             buttonUpdate.Text = "Редактировать";
-            buttonUpdate.UseVisualStyleBackColor = true;
+            buttonUpdate.UseVisualStyleBackColor = false;
             buttonUpdate.Click += ButtonUpdate_Click;
             // 
             // buttonDelete
             // 
+            buttonDelete.BackColor = Color.White;
             buttonDelete.Location = new Point(382, 25);
             buttonDelete.Margin = new Padding(5);
             buttonDelete.Name = "buttonDelete";
             buttonDelete.Size = new Size(164, 52);
             buttonDelete.TabIndex = 2;
             buttonDelete.Text = "Удалить";
-            buttonDelete.UseVisualStyleBackColor = true;
+            buttonDelete.UseVisualStyleBackColor = false;
             buttonDelete.Click += ButtonDelete_Click;
             // 
             // buttonAdd
             // 
+            buttonAdd.BackColor = Color.White;
             buttonAdd.Location = new Point(19, 23);
             buttonAdd.Margin = new Padding(5);
             buttonAdd.Name = "buttonAdd";
             buttonAdd.Size = new Size(164, 52);
             buttonAdd.TabIndex = 0;
             buttonAdd.Text = "Добавить";
-            buttonAdd.UseVisualStyleBackColor = true;
+            buttonAdd.UseVisualStyleBackColor = false;
             buttonAdd.Click += ButtonAdd_Click;
             // 
             // dataGridViewTypesOfPartners

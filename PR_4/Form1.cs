@@ -18,7 +18,7 @@ namespace PR_4
             base.OnLoad(e);
             db = new PartnersContext();
             db.TypesOfPartners.Load();
-            dataGridViewTypesOfPartners.DataSource = this.db.TypesOfPartners.Local
+            dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
                 .OrderBy(t => t.TypeOfPartner).ToList();
 
             dataGridViewTypesOfPartners.Columns["Id"].Visible = false;
@@ -53,6 +53,35 @@ namespace PR_4
                 .OrderBy(t => t.TypeOfPartner).ToList();
         }
 
+        private void ButtonUpdate_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
+                return;
+
+            int index = dataGridViewTypesOfPartners.SelectedRows[0].Index;
+            short id = 0;
+            bool converted = Int16.TryParse(dataGridViewTypesOfPartners[0, index].Value.ToString(), out id);
+            if (!converted)
+                return;
+
+            TypesOfPartner typesOfPartner = db.TypesOfPartners.Find(id);
+
+            FormTypeAdd formTypeAdd = new();
+            formTypeAdd.textBoxTypeName.Text = typesOfPartner.TypeOfPartner;
+
+            DialogResult result = formTypeAdd.ShowDialog(this);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            typesOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
+
+            db.SaveChanges();
+            MessageBox.Show("Редактирование объекта завершено");
+            dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
+                .OrderBy(t => t.TypeOfPartner).ToList();
+        }
+
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
             if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
@@ -80,11 +109,6 @@ namespace PR_4
             MessageBox.Show("Объект удален");
             dataGridViewTypesOfPartners.DataSource = db.TypesOfPartners.Local
                 .OrderBy(t => t.TypeOfPartner).ToList();
-        }
-
-        private void ButtonUpdate_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
