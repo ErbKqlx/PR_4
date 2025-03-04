@@ -8,7 +8,7 @@ namespace PR_4
     public partial class Form1 : Form
     {
         private PartnersContext db;
-        private DataGridView dataGridView;
+        //short id = 0;
 
         public Form1()
         {
@@ -42,20 +42,36 @@ namespace PR_4
             db = null;
         }
 
-        private void ButtonAdd_Click(object sender, EventArgs e)
+        private void ButtonAddTypeOfPartner_Click(object sender, EventArgs e)
         {
-            FormTypeAdd formTypeAdd = new();
+            FormTypeOfPartnerAdd formTypeAdd = new();
             DialogResult result = formTypeAdd.ShowDialog(this);
 
             if (result == DialogResult.Cancel)
                 return;
 
-
-
             TypesOfPartner typesOfPartner = new();
             typesOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
-
             db.TypesOfPartners.Add(typesOfPartner);
+            db.SaveChanges();
+
+            MessageBox.Show("Новый объект добавлен");
+
+            SetSortedData();
+        }
+
+        private void ButtonAddTypeOfProduct_Click(object sender, EventArgs e)
+        {
+            FormTypeOfProductAdd formTypeAdd = new();
+            DialogResult result = formTypeAdd.ShowDialog(this);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            TypesOfProduct typesOfProduct = new();
+            typesOfProduct.TypeOfProduct = formTypeAdd.textBoxTypeName.Text;
+            typesOfProduct.TypeCoefficient = Decimal.Parse(formTypeAdd.textBoxCoefficient.Text);
+            db.TypesOfProducts.Add(typesOfProduct);
             db.SaveChanges();
 
             MessageBox.Show("Новый объект добавлен");
@@ -65,12 +81,12 @@ namespace PR_4
 
         private void ButtonUpdate_Click(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count == 0)
+            if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
                 return;
 
-            int index = dataGridView.SelectedRows[0].Index;
+            int index = dataGridViewTypesOfPartners.SelectedRows[0].Index;
             short id = 0;
-            bool converted = Int16.TryParse(dataGridView[0, index].Value.ToString(), out id);
+            bool converted = Int16.TryParse(dataGridViewTypesOfPartners[0, index].Value.ToString(), out id);
             if (!converted)
                 return;
 
@@ -78,7 +94,7 @@ namespace PR_4
             TypesOfPartner typesOfPartner = db.TypesOfPartners.Find(id);
 
 
-            FormTypeAdd formTypeAdd = new();
+            FormTypeOfProductAdd formTypeAdd = new();
             formTypeAdd.textBoxTypeName.Text = typesOfPartner.TypeOfPartner;
 
             DialogResult result = formTypeAdd.ShowDialog(this);
@@ -96,7 +112,7 @@ namespace PR_4
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            if (dataGridView.SelectedRows.Count == 0)
+            if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
                 return;
 
             DialogResult result = MessageBox.Show(
@@ -108,9 +124,9 @@ namespace PR_4
             if (result == DialogResult.No)
                 return;
 
-            int index = dataGridView.SelectedRows[0].Index;
+            int index = dataGridViewTypesOfPartners.SelectedRows[0].Index;
             short id = 0;
-            bool converted = Int16.TryParse(dataGridView[0, index].Value.ToString(), out id);
+            bool converted = Int16.TryParse(dataGridViewTypesOfPartners[0, index].Value.ToString(), out id);
             if (!converted)
                 return;
 
@@ -131,20 +147,5 @@ namespace PR_4
             dataGridViewTypesOfProducts.DataSource = db.TypesOfProducts.Local
                 .OrderBy(t => t.TypeOfProduct).ToList();
         }
-
-        private void SelectDataGridView(object sender, MouseEventArgs e)
-        {
-            dataGridView = sender as DataGridView;
-        }
-
-
-
-        //private Object CreateObject(Object obj)
-        //{
-        //    if (obj == db.TypesOfPartners)
-        //    {
-
-        //    }
-        //}
     }
 }

@@ -2,13 +2,13 @@
 
 namespace PR_4
 {
-    public partial class FormTypeAdd : Form
+    public partial class FormTypeOfPartnerAdd : Form
     {
         private const string msgError = "Поле не может быть пустым";
-
-        public FormTypeAdd()
+        public FormTypeOfPartnerAdd()
         {
             InitializeComponent();
+            buttonSave.Enabled = false;
         }
 
         private void TextBoxTypeName_TextChanged(object sender, EventArgs e)
@@ -26,7 +26,6 @@ namespace PR_4
             if (String.IsNullOrEmpty(textBoxTypeName.Text))
             {
                 errorProvider.SetError(textBoxTypeName, msgError);
-                buttonSave.Enabled = false;
             }
             else
             {

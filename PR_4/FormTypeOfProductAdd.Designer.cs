@@ -1,6 +1,6 @@
 ﻿namespace PR_4
 {
-    partial class FormTypeAdd
+    partial class FormTypeOfProductAdd
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,8 @@
             buttonSave = new Button();
             buttonCancel = new Button();
             panel1 = new Panel();
+            label2 = new Label();
+            textBoxCoefficient = new TextBox();
             textBoxTypeName = new TextBox();
             label1 = new Label();
             errorProvider = new ErrorProvider(components);
@@ -47,7 +49,7 @@
             flowLayoutPanel1.Controls.Add(buttonCancel);
             flowLayoutPanel1.Dock = DockStyle.Bottom;
             flowLayoutPanel1.FlowDirection = FlowDirection.RightToLeft;
-            flowLayoutPanel1.Location = new Point(10, 102);
+            flowLayoutPanel1.Location = new Point(10, 192);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
             flowLayoutPanel1.Size = new Size(340, 40);
             flowLayoutPanel1.TabIndex = 0;
@@ -76,13 +78,32 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label2);
+            panel1.Controls.Add(textBoxCoefficient);
             panel1.Controls.Add(textBoxTypeName);
             panel1.Controls.Add(label1);
             panel1.Dock = DockStyle.Fill;
             panel1.Location = new Point(10, 10);
             panel1.Name = "panel1";
-            panel1.Size = new Size(340, 92);
+            panel1.Size = new Size(340, 182);
             panel1.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(19, 87);
+            label2.Name = "label2";
+            label2.Size = new Size(180, 25);
+            label2.TabIndex = 3;
+            label2.Text = "Коэффициент типа:";
+            // 
+            // textBoxCoefficient
+            // 
+            textBoxCoefficient.Location = new Point(19, 115);
+            textBoxCoefficient.Name = "textBoxCoefficient";
+            textBoxCoefficient.Size = new Size(277, 33);
+            textBoxCoefficient.TabIndex = 2;
+            textBoxCoefficient.TextChanged += TextBoxCoefficient_TextChanged;
             // 
             // textBoxTypeName
             // 
@@ -91,7 +112,6 @@
             textBoxTypeName.Size = new Size(277, 33);
             textBoxTypeName.TabIndex = 1;
             textBoxTypeName.TextChanged += TextBoxTypeName_TextChanged;
-            textBoxTypeName.Validating += TextBoxTypeName_Validating;
             // 
             // label1
             // 
@@ -106,19 +126,19 @@
             // 
             errorProvider.ContainerControl = this;
             // 
-            // FormTypeAdd
+            // FormTypeOfProductAdd
             // 
             AutoScaleDimensions = new SizeF(11F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.White;
-            ClientSize = new Size(360, 152);
+            ClientSize = new Size(360, 242);
             Controls.Add(panel1);
             Controls.Add(flowLayoutPanel1);
             Font = new Font("Segoe UI", 14.25F, FontStyle.Regular, GraphicsUnit.Point, 204);
             Margin = new Padding(5);
-            Name = "FormTypeAdd";
+            Name = "FormTypeOfProductAdd";
             Padding = new Padding(10);
-            Text = "FormTypeAdd";
+            Text = "Тип продукта";
             flowLayoutPanel1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
@@ -135,5 +155,7 @@
         private Label label1;
         private ErrorProvider errorProvider;
         public TextBox textBoxTypeName;
+        private Label label2;
+        public TextBox textBoxCoefficient;
     }
 }
