@@ -50,9 +50,9 @@ namespace PR_4
             if (result == DialogResult.Cancel)
                 return;
 
-            TypesOfPartner typesOfPartner = new();
-            typesOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
-            db.TypesOfPartners.Add(typesOfPartner);
+            TypesOfPartner typeOfPartner = new();
+            typeOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
+            db.TypesOfPartners.Add(typeOfPartner);
             db.SaveChanges();
 
             MessageBox.Show("Новый объект добавлен");
@@ -68,10 +68,10 @@ namespace PR_4
             if (result == DialogResult.Cancel)
                 return;
 
-            TypesOfProduct typesOfProduct = new();
-            typesOfProduct.TypeOfProduct = formTypeAdd.textBoxTypeName.Text;
-            typesOfProduct.TypeCoefficient = Decimal.Parse(formTypeAdd.textBoxCoefficient.Text);
-            db.TypesOfProducts.Add(typesOfProduct);
+            TypesOfProduct typeOfProduct = new();
+            typeOfProduct.TypeOfProduct = formTypeAdd.textBoxTypeName.Text;
+            typeOfProduct.TypeCoefficient = Decimal.Parse(formTypeAdd.textBoxCoefficient.Text);
+            db.TypesOfProducts.Add(typeOfProduct);
             db.SaveChanges();
 
             MessageBox.Show("Новый объект добавлен");
@@ -79,7 +79,7 @@ namespace PR_4
             SetSortedData();
         }
 
-        private void ButtonUpdate_Click(object sender, EventArgs e)
+        private void ButtonUpdateTypeOfPartner_Click(object sender, EventArgs e)
         {
             if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
                 return;
@@ -91,18 +91,18 @@ namespace PR_4
                 return;
 
 
-            TypesOfPartner typesOfPartner = db.TypesOfPartners.Find(id);
+            TypesOfPartner typeOfPartner = db.TypesOfPartners.Find(id);
 
 
-            FormTypeOfProductAdd formTypeAdd = new();
-            formTypeAdd.textBoxTypeName.Text = typesOfPartner.TypeOfPartner;
+            FormTypeOfPartnerAdd formTypeAdd = new();
+            formTypeAdd.textBoxTypeName.Text = typeOfPartner.TypeOfPartner;
 
             DialogResult result = formTypeAdd.ShowDialog(this);
 
             if (result == DialogResult.Cancel)
                 return;
 
-            typesOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
+            typeOfPartner.TypeOfPartner = formTypeAdd.textBoxTypeName.Text;
 
             db.SaveChanges();
             MessageBox.Show("Редактирование объекта завершено");
@@ -110,7 +110,40 @@ namespace PR_4
             SetSortedData();
         }
 
-        private void ButtonDelete_Click(object sender, EventArgs e)
+        private void ButtonUpdateTypeOfProduct_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTypesOfProducts.SelectedRows.Count == 0)
+                return;
+
+            int index = dataGridViewTypesOfProducts.SelectedRows[0].Index;
+            short id = 0;
+            bool converted = Int16.TryParse(dataGridViewTypesOfProducts[0, index].Value.ToString(), out id);
+            if (!converted)
+                return;
+
+
+            TypesOfProduct typeOfProduct = db.TypesOfProducts.Find(id);
+
+
+            FormTypeOfProductAdd formTypeAdd = new();
+            formTypeAdd.textBoxTypeName.Text = typeOfProduct.TypeOfProduct;
+            formTypeAdd.textBoxCoefficient.Text = typeOfProduct.TypeCoefficient.ToString();
+
+            DialogResult result = formTypeAdd.ShowDialog(this);
+
+            if (result == DialogResult.Cancel)
+                return;
+
+            typeOfProduct.TypeOfProduct = formTypeAdd.textBoxTypeName.Text;
+            typeOfProduct.TypeCoefficient = Decimal.Parse(formTypeAdd.textBoxCoefficient.Text);
+
+            db.SaveChanges();
+            MessageBox.Show("Редактирование объекта завершено");
+
+            SetSortedData();
+        }
+
+        private void ButtonDeleteTypeOfPartner_Click(object sender, EventArgs e)
         {
             if (dataGridViewTypesOfPartners.SelectedRows.Count == 0)
                 return;
@@ -132,6 +165,35 @@ namespace PR_4
 
             TypesOfPartner typesOfPartner = db.TypesOfPartners.Find(id);
             db.TypesOfPartners.Remove(typesOfPartner);
+
+            db.SaveChanges();
+            MessageBox.Show("Объект удален");
+
+            SetSortedData();
+        }
+
+        private void ButtonDeleteTypeOfProduct_Click(object sender, EventArgs e)
+        {
+            if (dataGridViewTypesOfProducts.SelectedRows.Count == 0)
+                return;
+
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить этот объект?",
+                "",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (result == DialogResult.No)
+                return;
+
+            int index = dataGridViewTypesOfProducts.SelectedRows[0].Index;
+            short id = 0;
+            bool converted = Int16.TryParse(dataGridViewTypesOfProducts[0, index].Value.ToString(), out id);
+            if (!converted)
+                return;
+
+            TypesOfProduct typeOfProduct = db.TypesOfProducts.Find(id);
+            db.TypesOfProducts.Remove(typeOfProduct);
 
             db.SaveChanges();
             MessageBox.Show("Объект удален");
