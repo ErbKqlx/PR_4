@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             panel1 = new Panel();
-            buttonDeleteTypeOfProduct = new Button();
-            buttonUpdateTypeOfProduct = new Button();
+            button3 = new Button();
+            button2 = new Button();
             buttonAddTypeOfProduct = new Button();
-            buttonUpdateTypeOfPartner = new Button();
-            buttonDeleteTypeOfPartner = new Button();
+            buttonUpdate = new Button();
+            buttonDelete = new Button();
             buttonAddTypeOfPartner = new Button();
             dataGridViewTypesOfPartners = new DataGridView();
             dataGridViewTypesOfProducts = new DataGridView();
@@ -44,11 +44,11 @@
             // 
             // panel1
             // 
-            panel1.Controls.Add(buttonDeleteTypeOfProduct);
-            panel1.Controls.Add(buttonUpdateTypeOfProduct);
+            panel1.Controls.Add(button3);
+            panel1.Controls.Add(button2);
             panel1.Controls.Add(buttonAddTypeOfProduct);
-            panel1.Controls.Add(buttonUpdateTypeOfPartner);
-            panel1.Controls.Add(buttonDeleteTypeOfPartner);
+            panel1.Controls.Add(buttonUpdate);
+            panel1.Controls.Add(buttonDelete);
             panel1.Controls.Add(buttonAddTypeOfPartner);
             panel1.Dock = DockStyle.Top;
             panel1.Location = new Point(10, 10);
@@ -57,29 +57,27 @@
             panel1.Size = new Size(1147, 97);
             panel1.TabIndex = 0;
             // 
-            // buttonDeleteTypeOfProduct
+            // button3
             // 
-            buttonDeleteTypeOfProduct.BackColor = Color.White;
-            buttonDeleteTypeOfProduct.Location = new Point(949, 25);
-            buttonDeleteTypeOfProduct.Margin = new Padding(5);
-            buttonDeleteTypeOfProduct.Name = "buttonDeleteTypeOfProduct";
-            buttonDeleteTypeOfProduct.Size = new Size(164, 64);
-            buttonDeleteTypeOfProduct.TabIndex = 6;
-            buttonDeleteTypeOfProduct.Text = "Удалить тип продукции";
-            buttonDeleteTypeOfProduct.UseVisualStyleBackColor = false;
-            buttonDeleteTypeOfProduct.Click += ButtonDeleteTypeOfProduct_Click;
+            button3.BackColor = Color.White;
+            button3.Location = new Point(949, 25);
+            button3.Margin = new Padding(5);
+            button3.Name = "button3";
+            button3.Size = new Size(164, 64);
+            button3.TabIndex = 6;
+            button3.Text = "Удалить тип продукции";
+            button3.UseVisualStyleBackColor = false;
             // 
-            // buttonUpdateTypeOfProduct
+            // button2
             // 
-            buttonUpdateTypeOfProduct.BackColor = Color.White;
-            buttonUpdateTypeOfProduct.Location = new Point(765, 25);
-            buttonUpdateTypeOfProduct.Margin = new Padding(5);
-            buttonUpdateTypeOfProduct.Name = "buttonUpdateTypeOfProduct";
-            buttonUpdateTypeOfProduct.Size = new Size(165, 64);
-            buttonUpdateTypeOfProduct.TabIndex = 5;
-            buttonUpdateTypeOfProduct.Text = "Редактировать тип продукции";
-            buttonUpdateTypeOfProduct.UseVisualStyleBackColor = false;
-            buttonUpdateTypeOfProduct.Click += ButtonUpdateTypeOfProduct_Click;
+            button2.BackColor = Color.White;
+            button2.Location = new Point(765, 25);
+            button2.Margin = new Padding(5);
+            button2.Name = "button2";
+            button2.Size = new Size(165, 64);
+            button2.TabIndex = 5;
+            button2.Text = "Редактировать тип продукции";
+            button2.UseVisualStyleBackColor = false;
             // 
             // buttonAddTypeOfProduct
             // 
@@ -93,29 +91,29 @@
             buttonAddTypeOfProduct.UseVisualStyleBackColor = false;
             buttonAddTypeOfProduct.Click += ButtonAddTypeOfProduct_Click;
             // 
-            // buttonUpdateTypeOfPartner
+            // buttonUpdate
             // 
-            buttonUpdateTypeOfPartner.BackColor = Color.White;
-            buttonUpdateTypeOfPartner.Location = new Point(200, 25);
-            buttonUpdateTypeOfPartner.Margin = new Padding(5);
-            buttonUpdateTypeOfPartner.Name = "buttonUpdateTypeOfPartner";
-            buttonUpdateTypeOfPartner.Size = new Size(164, 64);
-            buttonUpdateTypeOfPartner.TabIndex = 3;
-            buttonUpdateTypeOfPartner.Text = "Редактировать тип партнера";
-            buttonUpdateTypeOfPartner.UseVisualStyleBackColor = false;
-            buttonUpdateTypeOfPartner.Click += ButtonUpdateTypeOfPartner_Click;
+            buttonUpdate.BackColor = Color.White;
+            buttonUpdate.Location = new Point(200, 25);
+            buttonUpdate.Margin = new Padding(5);
+            buttonUpdate.Name = "buttonUpdate";
+            buttonUpdate.Size = new Size(164, 64);
+            buttonUpdate.TabIndex = 3;
+            buttonUpdate.Text = "Редактировать тип партнера";
+            buttonUpdate.UseVisualStyleBackColor = false;
+            buttonUpdate.Click += ButtonUpdate_Click;
             // 
-            // buttonDeleteTypeOfPartner
+            // buttonDelete
             // 
-            buttonDeleteTypeOfPartner.BackColor = Color.White;
-            buttonDeleteTypeOfPartner.Location = new Point(382, 25);
-            buttonDeleteTypeOfPartner.Margin = new Padding(5);
-            buttonDeleteTypeOfPartner.Name = "buttonDeleteTypeOfPartner";
-            buttonDeleteTypeOfPartner.Size = new Size(164, 64);
-            buttonDeleteTypeOfPartner.TabIndex = 2;
-            buttonDeleteTypeOfPartner.Text = "Удалить тип партнера";
-            buttonDeleteTypeOfPartner.UseVisualStyleBackColor = false;
-            buttonDeleteTypeOfPartner.Click += ButtonDeleteTypeOfPartner_Click;
+            buttonDelete.BackColor = Color.White;
+            buttonDelete.Location = new Point(382, 25);
+            buttonDelete.Margin = new Padding(5);
+            buttonDelete.Name = "buttonDelete";
+            buttonDelete.Size = new Size(164, 64);
+            buttonDelete.TabIndex = 2;
+            buttonDelete.Text = "Удалить тип партнера";
+            buttonDelete.UseVisualStyleBackColor = false;
+            buttonDelete.Click += ButtonDelete_Click;
             // 
             // buttonAddTypeOfPartner
             // 
@@ -180,13 +178,13 @@
         #endregion
 
         private Panel panel1;
-        private Button buttonUpdateTypeOfPartner;
-        private Button buttonDeleteTypeOfPartner;
+        private Button buttonUpdate;
+        private Button buttonDelete;
         private Button buttonAddTypeOfPartner;
         private DataGridView dataGridViewTypesOfPartners;
         private DataGridView dataGridViewTypesOfProducts;
-        private Button buttonDeleteTypeOfProduct;
-        private Button buttonUpdateTypeOfProduct;
+        private Button button3;
+        private Button button2;
         private Button buttonAddTypeOfProduct;
     }
 }
